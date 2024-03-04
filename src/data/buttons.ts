@@ -4,7 +4,31 @@ export const CHAT_BUTTONS = {
 		{
 			id: 1,
 			text: "Chat with GPT-3.5",
-			link: "#",
+			link: "/chat/chat-completion",
+			enabled: true,
+		},
+	],
+};
+
+export const IMAGES_BUTTONS = {
+	title: "Images",
+	buttons: [
+		{
+			id: 1,
+			text: "Generate Image from Text Prompt",
+			link: "/image/generate-image",
+			enabled: true,
+		},
+		{
+			id: 2,
+			text: "Create Image Edit",
+			link: "/image/edit-image",
+			enabled: true,
+		},
+		{
+			id: 3,
+			text: "Generate Image Variations",
+			link: "/image/generate-image-variations",
 			enabled: true,
 		},
 	],
@@ -16,20 +40,20 @@ export const AUDIO_BUTTONS = {
 		{
 			id: 1,
 			text: "Text-to-Audio",
-			link: "#",
-			enabled: false,
+			link: "/audio/text-to-audio",
+			enabled: true,
 		},
 		{
 			id: 2,
 			text: "Audio-to-Text",
-			link: "#",
-			enabled: false,
+			link: "/audio/audio-to-text",
+			enabled: true,
 		},
 		{
 			id: 3,
 			text: "Audio to Translated Text",
-			link: "#",
-			enabled: false,
+			link: "audio/audio-to-translated-text",
+			enabled: true,
 		},
 	],
 };
@@ -81,6 +105,7 @@ export const FINE_TUNING_BUTTONS = {
 		},
 	],
 };
+
 export const FILES_BUTTONS = {
 	title: "Files",
 	buttons: [
@@ -116,41 +141,7 @@ export const FILES_BUTTONS = {
 		},
 	],
 };
-export const IMAGES_BUTTONS = {
-	title: "Images",
-	buttons: [
-		{
-			id: 1,
-			text: "Generate Image from Text Prompt",
-			link: "#",
-			enabled: false,
-		},
-		{
-			id: 2,
-			text: "Create Image Edit",
-			link: "#",
-			enabled: false,
-		},
-		{
-			id: 3,
-			text: "Generate Image Variations",
-			link: "#",
-			enabled: false,
-		},
-		{
-			id: 4,
-			text: "Get Info of a Job",
-			link: "#",
-			enabled: false,
-		},
-		{
-			id: 5,
-			text: "Cencel a Job",
-			link: "#",
-			enabled: false,
-		},
-	],
-};
+
 export const MODELS_BUTTONS = {
 	title: "Models",
 	buttons: [
