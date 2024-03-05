@@ -1,8 +1,5 @@
 import { openai } from "@/config/openai";
-import axios from "axios";
 import { config } from "dotenv";
-import { headers } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
 config();
 
 export async function POST(req: Request) {

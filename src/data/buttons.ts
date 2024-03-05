@@ -18,7 +18,7 @@ export const IMAGES_BUTTONS = {
 			id: 1,
 			text: "Generate",
 			link: "/image/generate-image",
-			enabled: false,
+			enabled: true,
 			tooltipText: "Generate Image from a Text Prompt",
 		},
 		{

@@ -19,7 +19,7 @@ export default function Section(props: SectionPropTypes) {
 	return (
 		<Card className="p-4 my-8">
 			<h1 className="text-2xl text-center font-semibold mb-3">{props.title}</h1>
-			<div className="flex gap-4 w-fit mx-auto">
+			<div className="flex justify-center gap-4 flex-wrap mx-auto">
 				{props.buttons.map((button: any) => (
 					<TooltipProvider key={button.id}>
 						<Tooltip>
