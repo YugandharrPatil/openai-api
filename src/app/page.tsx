@@ -14,7 +14,10 @@ import {
 export default function HomePage() {
 	return (
 		<main className="container">
-			<h1 className="text-center text-3xl font-bold mt-8">OpenAI API</h1>
+			<div className="text-center mt-8">
+				<h1 className="text-3xl font-bold">OpenAI API</h1>
+				<h3 className="mt-4 font-semibold">Hover over the buttons for a short description</h3>
+			</div>
 			<Section {...CHAT_BUTTONS} />
 			<Section {...IMAGES_BUTTONS} />
 			<Section {...AUDIO_BUTTONS} />

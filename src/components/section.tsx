@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
@@ -9,6 +10,7 @@ type SectionPropTypes = {
 		text: string;
 		link: string;
 		enabled: boolean;
+		tooltipText: string;
 	}[];
 };
 
@@ -19,11 +21,18 @@ export default function Section(props: SectionPropTypes) {
 			<h1 className="text-2xl text-center font-semibold mb-3">{props.title}</h1>
 			<div className="flex gap-4 w-fit mx-auto">
 				{props.buttons.map((button: any) => (
-					<Button disabled={!button.enabled} key={button.id}>
-						<Link target="_blank" href={button.link}>
-							{button.text}
-						</Link>
-					</Button>
+					<TooltipProvider key={button.id}>
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Button disabled={!button.enabled}>
+									<Link target="_blank" href={button.link}>
+										{button.text}
+									</Link>
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent>{button.tooltipText}</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
 				))}
 			</div>
 		</Card>
