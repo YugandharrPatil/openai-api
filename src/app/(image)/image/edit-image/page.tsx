@@ -16,7 +16,7 @@ export default function EditImagePage() {
 	} = useForm();
 
 	const onSubmit = async (data: FieldValues) => {
-		const res = await axios.post("/image/generate-image/api", data);
+		const res = await axios.post("/image/edit-image/api", data);
 		// console.log(data);
 		// console.log(res.data.data[0].url);
 		reset();
@@ -33,6 +33,7 @@ export default function EditImagePage() {
 			</div>
 			<form onSubmit={handleSubmit(onSubmit)} className="xl:w-1/2 mx-auto my-6">
 				<div className="flex gap-4">
+					<Input className="" {...register("input", { required: "Please enter a valid prompt" })} type="file" />
 					<Input className="" {...register("input", { required: "Please enter a valid prompt" })} type="text" />
 
 					<Button disabled={isSubmitting} type="submit">
