@@ -11,7 +11,8 @@ import type { FieldValues } from "react-hook-form";
 import { useForm } from "react-hook-form";
 
 export default function GenerateImagePage() {
-	const [imageURL, setImageURL] = useState();
+	const [imageURL, setImageURL] = useState("");
+	const [susError, setSusError] = useState("");
 
 	const {
 		register,
@@ -21,10 +22,16 @@ export default function GenerateImagePage() {
 	} = useForm();
 
 	const onSubmit = async (data: FieldValues) => {
+		console.log(data);
 		const res = await axios.post("/image/generate-image/api", data);
-		// console.log(data);
-		// console.log(res.data.data[0].url);
-		setImageURL(res.data.data[0].url);
+		console.log(res);
+		if (res.data.status === 400) {
+			setSusError(res.data.error.message);
+			setImageURL("");
+		} else {
+			setImageURL(res.data.data[0].url);
+			setSusError("");
+		}
 		reset();
 	};
 
@@ -40,7 +47,10 @@ export default function GenerateImagePage() {
 			<form onSubmit={handleSubmit(onSubmit)} className="xl:w-1/2 mx-auto my-6">
 				<div className="flex gap-4">
 					<Input className="" {...register("input", { required: "Please enter a valid prompt" })} type="text" />
-					<select {...register("size")}>
+					<select
+						{...register("size")}
+						className="flex h-10 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1"
+					>
 						{/* <SelectTrigger className="w-[180px]">
 							<SelectValue placeholder="Select a Size" />
 						</SelectTrigger>
@@ -57,9 +67,10 @@ export default function GenerateImagePage() {
 						Send
 					</Button>
 				</div>
-				{errors.input && <p className="text-red-400">{`${errors.input?.message}`}</p>}
+				{errors.input && <p className="text-red-400 text-center">{`${errors.input?.message}`}</p>}
 			</form>
-			{imageURL && <img className="mx-auto my-6" src={imageURL} alt="" />}
+			{imageURL !== "" && <img className="mx-auto my-6" src={imageURL} alt="" />}
+			{<p className="text-red-400 text-center">{susError}</p>}
 		</main>
 	);
 }
