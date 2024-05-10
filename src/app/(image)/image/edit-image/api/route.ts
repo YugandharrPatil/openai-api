@@ -17,12 +17,12 @@ export async function POST(req: Request) {
 }
 
 async function main(input: string) {
-	const imageEdition = await openai.images.edit({
-    image: ,
-    mask: ,
-    prompt: input
-	});
-	return imageEdition;
+	// const imageEdition = await openai.images.edit({
+	//   image: ,
+	//   mask: ,
+	//   prompt: input
+	// });
+	// return imageEdition;
 }
 
 // export async function POST(req: Request) {
